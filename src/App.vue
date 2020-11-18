@@ -58,17 +58,34 @@ export default {
   },
 
   data: () => ({
-    theme: 'dark',
+    theme: '',
   }),
 
   methods: {
     toggleTheme: function () {
       this.$vuetify.theme.dark = !this.$vuetify.theme.dark
-      if (this.$vuetify.theme.dark)
+      if (this.$vuetify.theme.dark) {
         this.theme = 'dark'
-      else
+        localStorage.setItem('theme', 'dark')
+      } else {
         this.theme = 'light'
+        localStorage.setItem('theme', 'light')
+      }
     },
+  },
+
+  created () {
+    console.log('created')
+    this.theme = localStorage.getItem('theme') || 'dark'
+    this.$vuetify.theme.dark = this.theme === 'dark';
+  },
+
+  mounted () {
+    console.log('mounted')
+  },
+
+  updated () {
+    console.log('updated')
   },
 }
 </script>
