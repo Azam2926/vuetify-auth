@@ -33,7 +33,6 @@
         <HelloWorld/>
         <HelloWorld/>
         <HelloWorld/>
-        <HelloWorld/>
       </v-parallax>
     </v-main>
 
