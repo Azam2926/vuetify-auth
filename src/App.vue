@@ -21,7 +21,7 @@
         />
       </div>
       <v-spacer></v-spacer>
-      <v-btn @click="toggleTheme">
+      <v-btn fab small  @click="toggleTheme">
         <v-icon>mdi-invert-colors</v-icon>
       </v-btn>
     </v-app-bar>
