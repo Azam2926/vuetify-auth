@@ -27,7 +27,14 @@
     </v-app-bar>
 
     <v-main>
-      <HelloWorld/>
+      <v-parallax height="100vwh" src="https://cdn.vuetifyjs.com/images/parallax/material.jpg">
+        <HelloWorld/>
+        <HelloWorld/>
+        <HelloWorld/>
+        <HelloWorld/>
+        <HelloWorld/>
+        <HelloWorld/>
+      </v-parallax>
     </v-main>
 
     <v-footer
@@ -77,7 +84,7 @@ export default {
   created () {
     console.log('created')
     this.theme = localStorage.getItem('theme') || 'dark'
-    this.$vuetify.theme.dark = this.theme === 'dark';
+    this.$vuetify.theme.dark = this.theme === 'dark'
   },
 
   mounted () {
