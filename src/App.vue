@@ -27,13 +27,8 @@
     </v-app-bar>
 
     <v-main>
-      <v-parallax height="100vwh" src="https://cdn.vuetifyjs.com/images/parallax/material.jpg">
-        <HelloWorld/>
-        <HelloWorld/>
-        <HelloWorld/>
-        <HelloWorld/>
-        <HelloWorld/>
-      </v-parallax>
+      <HelloWorld/>
+      <Login/>
     </v-main>
 
     <v-footer
@@ -55,11 +50,13 @@
 
 <script>
 import HelloWorld from './components/HelloWorld'
+import Login from '@/components/Login'
 
 export default {
   name: 'App',
 
   components: {
+    Login,
     HelloWorld,
   },
 
