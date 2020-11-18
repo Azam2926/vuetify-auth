@@ -10,7 +10,6 @@
             transition="scale-transition"
             width="40"
         />
-
         <v-img
             alt="Vuetify Name"
             class="shrink mt-1 hidden-sm-and-down"
@@ -21,7 +20,7 @@
         />
       </div>
       <v-spacer></v-spacer>
-      <v-btn fab small  @click="toggleTheme">
+      <v-btn fab small @click="toggleTheme">
         <v-icon>mdi-invert-colors</v-icon>
       </v-btn>
     </v-app-bar>
@@ -67,28 +66,40 @@ export default {
   methods: {
     toggleTheme: function () {
       this.$vuetify.theme.dark = !this.$vuetify.theme.dark
-      if (this.$vuetify.theme.dark) {
-        this.theme = 'dark'
-        localStorage.setItem('theme', 'dark')
-      } else {
-        this.theme = 'light'
-        localStorage.setItem('theme', 'light')
-      }
+      if (this.$vuetify.theme.dark)
+        this.changeTheme('dark')
+      else
+        this.changeTheme('light')
+    },
+
+    /**
+     * @param {string} tema for theme param
+     */
+    changeTheme (tema) {
+      this.theme = tema
+      localStorage.setItem('theme', tema)
     },
   },
 
   created () {
-    console.log('created')
-    this.theme = localStorage.getItem('theme') || 'dark'
+    if (localStorage.getItem('theme'))
+      this.theme = localStorage.getItem('theme')
+    else if (window.matchMedia('(prefers-color-scheme: dark)').matches)
+      this.changeTheme('dark')
+    else
+      this.changeTheme('light')
+
     this.$vuetify.theme.dark = this.theme === 'dark'
-  },
 
-  mounted () {
-    console.log('mounted')
-  },
+    window.matchMedia('(prefers-color-scheme: dark)').addListener((e) => {
+      if (e.matches)
+        this.changeTheme('dark')
+      else
+        this.changeTheme('light')
+      this.$vuetify.theme.dark = this.theme === 'dark'
 
-  updated () {
-    console.log('updated')
+      console.log(`changed to ${e.matches ? 'dark' : 'light'} mode`)
+    })
   },
 }
 </script>
