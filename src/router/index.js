@@ -5,6 +5,7 @@ import Main from '@/layout/Main'
 import Auth from '@/layout/Auth'
 import Login from '@/components/Auth/Login'
 import Registration from '@/components/Auth/Registration'
+import NotFound from '@/components/NotFound'
 
 Vue.use(VueRouter)
 
@@ -26,6 +27,11 @@ const routes = [
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
         component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+      },
+      {
+        path: '/error',
+        name: 'Error',
+        component: NotFound,
       },
     ],
     meta: { requiresAuth: true },
@@ -62,10 +68,9 @@ const routes = [
   },
   {
     path: '*',
-    redirect: '/auth/login'
-  }
+    redirect: '/error',
+  },
 ]
-
 
 const router = new VueRouter({
   mode: 'history',
