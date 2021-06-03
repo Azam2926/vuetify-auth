@@ -13,7 +13,7 @@
           tile
       >
         <v-card-text class="py-2 text-center">
-          {{ new Date().getFullYear() }} — <strong>Vuetify</strong>
+          {{ new Date().getFullYear() }} — <strong>iazam</strong>
         </v-card-text>
       </v-card>
     </v-footer>

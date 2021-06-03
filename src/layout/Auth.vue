@@ -11,7 +11,7 @@
           tile
       >
         <v-card-text class="py-2 text-center">
-          {{ new Date().getFullYear() }} — <strong>Vuetify</strong>
+          {{ new Date().getFullYear() }} — <strong>iazam</strong>
           <v-btn class="float-right" fab small @click="toggleTheme">
             <v-icon>mdi-invert-colors</v-icon>
           </v-btn>
